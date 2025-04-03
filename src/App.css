@@ -1,0 +1,128 @@
+@import 'tailwindcss';
+/* src/App.css */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-padding-top: 80px; /* Adjust for navbar height when scrolling to anchors */
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom focus states */
+*:focus {
+  outline: 2px solid purple;
+  outline-offset: 2px;
+}
+
+/* Hover effects for interactive elements */
+a, button {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Gradient text utility */
+.text-gradient {
+  background: linear-gradient(to right, #7c3aed, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Floating animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating-text {
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Section animations */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add animation to scroll when triggered by navbar click */
+@keyframes pulse-fade {
+  0% { background-color: rgba(124, 58, 237, 0.1); }
+  50% { background-color: rgba(124, 58, 237, 0.2); }
+  100% { background-color: transparent; }
+}
+
+.scroll-highlight {
+  animation: pulse-fade 1.5s ease-in-out;
+}
+
+/* General fade-in animation for all elements inside the block */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px); /* Slightly move elements downward */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0); /* Bring elements to their original position */
+}
+
+/* Target child components inside each block */
+.fade-in-section .fade-in-child {
+  opacity: 0;
+  transform: translateY(30px); /* Move them down for a smoother transition */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible .fade-in-child {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll highlight animation for the section */
+.scroll-highlight {
+  animation: scrollHighlight 1s ease-in-out;
+}
+
+@keyframes scrollHighlight {
+  0% {
+    transform: scale(1);
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  100% {
+    transform: scale(1);
+    background-color: transparent;
+  }
+}
