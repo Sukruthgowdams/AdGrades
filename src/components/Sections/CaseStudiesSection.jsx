@@ -1,87 +1,137 @@
-import React from 'react';
-import { Container } from '../CommonLayout/Container';
-import { Button } from '../CommonLayout/Button';
+"use client"
+import { motion } from "framer-motion"
+import { Container } from "../CommonLayout/Container"
+import { AnimatedButton } from "../animations/AnimatedButton"
+import { FadeInWhenVisible } from "../animations/FadeInWhenVisible"
+import { ParallaxSection } from "../animations/ParallaxSection"
+import { CASE_STUDIES } from "../../constants"
 
 export const CaseStudiesSection = () => {
-  const caseStudies = [
-    {
-      title: "Nike's \"Just Do It\"",
-      subtitle: "The Power of Emotional Branding",
-      description: "From $800M to $9.2B in 10 years. Nike didn't just sell shoes—they sold a lifestyle. Their \"Just Do It\" campaign focused on emotional storytelling and bold advertising, turning them into a global powerhouse.",
-      image: "/api/placeholder/400/300",
-      logo: "/api/placeholder/100/50"
-    },
-    {
-      title: "Coca-Cola's \"Share a Coke\"",
-      subtitle: "Personalization Wins",
-      description: "Increased U.S. sales by 2% after a decade of decline. By replacing its logo with customer names, Coca-Cola made marketing personal. The result? A viral sensation that made people hunt for their names and share the experience online.",
-      image: "/api/placeholder/400/300",
-      logo: "/api/placeholder/100/50"
-    },
-    {
-      title: "Airbnb",
-      subtitle: "User-Generated Content Magic",
-      description: "Grew from a struggling startup to a $75B brand. Instead of traditional ads, Airbnb leveraged user stories—real travelers, real hosts, real experiences. This trust-building strategy made them the go-to platform for accommodation.",
-      image: "/api/placeholder/400/300",
-      logo: "/api/placeholder/100/50"
-    },
-    {
-      title: "Dollar Shave Club",
-      subtitle: "Viral Video + Disruptive Marketing",
-      description: "From startup to $1B acquisition in 5 years. A single, hilariously bold video flipped the men's grooming industry upside down. Their lesson? Be different, be memorable, and make people talk.",
-      image: "/api/placeholder/400/300",
-      logo: "/api/placeholder/100/50"
-    }
-  ];
-
   return (
     <div id="case-studies" className="py-20 bg-white">
       <Container>
-        <div className="text-center mb-16">
-          <p className="text-purple-600 font-medium mb-4">CASE STUDIES – PROOF THAT WE DELIVER</p>
-          <h2 className="text-4xl font-bold mb-6">We let results do the talking.</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Here's how smart marketing changed the game for brands worldwide.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {caseStudies.map((study, index) => (
-            <div 
-              key={index} 
-              className="bg-gray-50 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+        <FadeInWhenVisible>
+          <div className="text-center mb-16">
+            <motion.p
+              className="text-purple-600 font-medium mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
             >
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-2/5">
-                  <img 
-                    src={study.image} 
-                    alt={study.title}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="md:w-3/5 p-6">
-                  <div className="flex items-center mb-3">
-                    <img 
-                      src={study.logo} 
-                      alt={`${study.title} logo`}
-                      className="h-6 mr-3"
+              CASE STUDIES – PROOF THAT WE DELIVER
+            </motion.p>
+            <motion.h2
+              className="text-4xl font-bold mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              We let results do the talking.
+            </motion.h2>
+            <motion.p
+              className="text-xl text-gray-600 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              Here's how smart marketing changed the game for brands worldwide.
+            </motion.p>
+          </div>
+        </FadeInWhenVisible>
+
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          {CASE_STUDIES.map((study, index) => (
+            <FadeInWhenVisible key={index} direction={index % 2 === 0 ? "left" : "right"} delay={0.1 * index}>
+              <motion.div
+                className="bg-gray-50 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+                whileHover={{
+                  scale: 1.02,
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="flex flex-col md:flex-row">
+                  <ParallaxSection className="md:w-2/5" direction="center">
+                    <motion.img
+                      src={study.image}
+                      alt={study.title}
+                      className="h-full w-full object-cover"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.5 }}
                     />
-                    <h3 className="text-xl font-bold">{study.title}</h3>
+                  </ParallaxSection>
+                  <div className="md:w-3/5 p-6">
+                    <div className="flex items-center mb-3">
+                      <motion.img
+                        src={study.logo}
+                        alt={`${study.title} logo`}
+                        className="h-6 mr-3"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.5,
+                          delay: 0.6 + index * 0.1,
+                          type: "spring",
+                          stiffness: 200,
+                        }}
+                      />
+                      <motion.h3
+                        className="text-xl font-bold"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                      >
+                        {study.title}
+                      </motion.h3>
+                    </div>
+                    <motion.p
+                      className="text-purple-600 font-medium mb-2"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                    >
+                      {study.subtitle}
+                    </motion.p>
+                    <motion.p
+                      className="text-gray-600"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
+                    >
+                      {study.description}
+                    </motion.p>
                   </div>
-                  <p className="text-purple-600 font-medium mb-2">{study.subtitle}</p>
-                  <p className="text-gray-600">{study.description}</p>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </FadeInWhenVisible>
           ))}
-        </div>
-        
+        </motion.div>
+
         <div className="text-center">
-          <Button className="bg-purple-600 hover:bg-purple-700 text-white py-3 px-8 rounded-lg font-bold">
+          <AnimatedButton
+            className="bg-purple-600 hover:bg-purple-700 text-white py-3 px-8 rounded-lg font-bold"
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 10px 25px -5px rgba(124, 58, 237, 0.5)",
+            }}
+          >
             Want results like this? Let's talk.
-          </Button>
+          </AnimatedButton>
         </div>
       </Container>
     </div>
-  );
-};
+  )
+}

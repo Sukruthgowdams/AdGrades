@@ -1,64 +1,154 @@
-import React from 'react';
-import { Container } from '../CommonLayout/Container';
-import { Button } from '../CommonLayout/Button';
+"use client"
+import { motion } from "framer-motion"
+import { Container } from "../CommonLayout/Container"
+import { AnimatedButton } from "../animations/AnimatedButton"
+import { FadeInWhenVisible } from "../animations/FadeInWhenVisible"
 
 export const ContactSection = () => {
+  // Animation variants
+  const formControlVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.3 + i * 0.1,
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    }),
+  }
+
   return (
     <div id="contact" className="py-20 bg-gradient-to-br from-purple-600 to-indigo-700 text-white">
       <Container>
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-6">LET'S MAKE YOU UNSTOPPABLE</h2>
-          <p className="text-xl max-w-3xl mx-auto">
-            Tired of marketing that doesn't work? Let's change that today.
-          </p>
-        </div>
-        
-        <div className="max-w-lg mx-auto bg-white rounded-lg p-8 shadow-lg">
+        <FadeInWhenVisible>
+          <div className="text-center mb-12">
+            <motion.h2
+              className="text-4xl font-bold mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              LET'S MAKE YOU UNSTOPPABLE
+            </motion.h2>
+            <motion.p
+              className="text-xl max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              Tired of marketing that doesn't work? Let's change that today.
+            </motion.p>
+          </div>
+        </FadeInWhenVisible>
+
+        <motion.div
+          className="max-w-lg mx-auto bg-white rounded-lg p-8 shadow-lg"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.5,
+            delay: 0.3,
+            type: "spring",
+            stiffness: 100,
+          }}
+        >
           <form>
-            <div className="mb-4">
+            <motion.div
+              className="mb-4"
+              custom={0}
+              variants={formControlVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               <label htmlFor="name" className="block text-gray-700 text-lg font-semibold mb-2">
                 Name
               </label>
-              <input
+              <motion.input
                 id="name"
                 type="text"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 placeholder="Your Name"
+                whileFocus={{
+                  boxShadow: "0 0 0 3px rgba(124, 58, 237, 0.2)",
+                  borderColor: "#7c3aed",
+                }}
               />
-            </div>
+            </motion.div>
 
-            <div className="mb-4">
+            <motion.div
+              className="mb-4"
+              custom={1}
+              variants={formControlVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               <label htmlFor="email" className="block text-gray-700 text-lg font-semibold mb-2">
                 Email
               </label>
-              <input
+              <motion.input
                 id="email"
                 type="email"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 placeholder="Your Email"
+                whileFocus={{
+                  boxShadow: "0 0 0 3px rgba(124, 58, 237, 0.2)",
+                  borderColor: "#7c3aed",
+                }}
               />
-            </div>
+            </motion.div>
 
-            <div className="mb-4">
+            <motion.div
+              className="mb-4"
+              custom={2}
+              variants={formControlVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               <label htmlFor="message" className="block text-gray-700 text-lg font-semibold mb-2">
                 Message
               </label>
-              <textarea
+              <motion.textarea
                 id="message"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 rows="4"
                 placeholder="Your Message"
-              ></textarea>
-            </div>
+                whileFocus={{
+                  boxShadow: "0 0 0 3px rgba(124, 58, 237, 0.2)",
+                  borderColor: "#7c3aed",
+                }}
+              ></motion.textarea>
+            </motion.div>
 
-            <div className="text-center">
-              <Button type="submit" className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700">
+            <motion.div
+              className="text-center"
+              custom={3}
+              variants={formControlVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <AnimatedButton
+                type="submit"
+                className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700"
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 10px 25px -5px rgba(79, 70, 229, 0.5)",
+                }}
+              >
                 Send Message
-              </Button>
-            </div>
+              </AnimatedButton>
+            </motion.div>
           </form>
-        </div>
+        </motion.div>
       </Container>
     </div>
-  );
-};
+  )
+}
