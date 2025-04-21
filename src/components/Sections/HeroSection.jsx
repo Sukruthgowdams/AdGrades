@@ -59,7 +59,7 @@ export const HeroSection = () => {
         waveSpeedY={0.005}
         waveAmpX={32}
         waveAmpY={16}
-        xGap={10}
+        xGap={5}
         yGap={32}
         className="absolute inset-0 z-0"
       />
