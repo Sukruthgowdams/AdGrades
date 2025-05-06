@@ -35,8 +35,7 @@ export const Navbar = () => {
     }
     window.addEventListener("scroll", onScroll)
     return () => window.removeEventListener("scroll", onScroll)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [visibleLetters])
 
   const scrollToSection = (e, href) => {
     e.preventDefault()
@@ -56,7 +55,9 @@ export const Navbar = () => {
     >
       <motion.nav
         className={`w-full max-w-6xl px-4 py-3 transition-all duration-300 ${
-          scrolled ? "bg-white/80 backdrop-blur-md shadow-md rounded-full" : "bg-white shadow"
+          scrolled
+            ? "bg-[#12141e]/80 backdrop-blur-md shadow-md rounded-full"
+            : "bg-[#12141e] shadow"
         }`}
         ref={navRef}
         animate={{
@@ -71,7 +72,7 @@ export const Navbar = () => {
             {fullText.split("").map((char, i) => (
               <motion.span
                 key={i}
-                className={i < 2 ? "text-purple-700" : "text-gray-800"}
+                className={i < 2 ? "text-[#01afff]" : "text-[#d3e3ed]"}
                 initial={{ y: -20, opacity: 0 }}
                 animate={{
                   y: i < visibleLetters ? 0 : -20,
@@ -87,7 +88,7 @@ export const Navbar = () => {
           <div className="md:hidden">
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-800 hover:text-purple-600"
+              className="text-[#d3e3ed] hover:text-[#01afff]"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -113,13 +114,13 @@ export const Navbar = () => {
               particleCount={12}
               particleDistances={[80, 10]}
               animationTime={350}
-              colors={[1, 1, 2, 2, 3, 3]}
+              colors={[1, 1, 2, 2, 3, 3]} // you can define color maps here too
             />
             <AnimatedButton
-              className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg font-semibold"
+              className="bg-[#00aeff] hover:bg-[#08b7fc] text-white px-4 py-2 rounded-lg font-semibold"
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0 8px 20px -5px rgba(124, 58, 237, 0.5)",
+                boxShadow: "0 8px 20px -5px rgba(0, 174, 255, 0.5)",
               }}
             >
               Let's Make You Unstoppable
@@ -141,7 +142,7 @@ export const Navbar = () => {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => scrollToSection(e, item.href)}
-                  className="block py-2 text-gray-800 hover:text-purple-600"
+                  className="block py-2 text-[#d3e3ed] hover:text-[#01afff]"
                   initial={{ y: -10, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: i * 0.08, duration: 0.3 }}
@@ -149,7 +150,7 @@ export const Navbar = () => {
                   {item.name}
                 </motion.a>
               ))}
-              <Button variant="primary" className="mt-4 w-full bg-purple-600 hover:bg-purple-700 text-white">
+              <Button variant="primary" className="mt-4 w-full bg-[#00aeff] hover:bg-[#08b7fc] text-white">
                 Let's Make You Unstoppable
               </Button>
             </motion.div>

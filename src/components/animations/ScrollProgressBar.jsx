@@ -1,7 +1,7 @@
 "use client"
 import { motion, useScroll } from "framer-motion"
 
-export const ScrollProgressBar = ({ color = "#7c3aed", height = 4, zIndex = 100 }) => {
+export const ScrollProgressBar = ({ color = "#00aeff", height = 4, zIndex = 100 }) => {
   const { scrollYProgress } = useScroll()
 
   return (
@@ -17,4 +17,3 @@ export const ScrollProgressBar = ({ color = "#7c3aed", height = 4, zIndex = 100 
     />
   )
 }
-

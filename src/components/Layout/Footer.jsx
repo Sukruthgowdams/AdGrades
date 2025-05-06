@@ -57,7 +57,7 @@ export const Footer = () => {
       <Container className="text-center">
         <motion.div className="flex justify-center items-center mb-8" variants={itemVariants}>
           <motion.span className="font-bold text-3xl" whileHover={{ scale: 1.05 }}>
-            <span className="text-purple-400">Ad</span>
+            <span className="text-blue-400">Ad</span>
             <span className="text-white">Grades</span>
           </motion.span>
         </motion.div>
@@ -156,7 +156,7 @@ export const Footer = () => {
                 className="px-4 py-2 rounded-l-lg focus:outline-none text-gray-900 w-full"
               />
               <motion.button
-                className="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-r-lg"
+                className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-lg"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

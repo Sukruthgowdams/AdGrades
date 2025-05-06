@@ -22,12 +22,13 @@ export const LoadingScreen = ({ children }) => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="fixed inset-0 flex flex-col items-center justify-center bg-white z-50"
+          className="fixed inset-0 flex flex-col items-center justify-center bg-[#1d202a] z-50"
         >
-          <div className="w-64 h-64 flex items-center justify-center">
+          <div className="text-sky-500 font-semibold mt-4 text-xl">
+
             <img src="/animations/loading-animation.gif" alt="Loadinkg" className="w-56 h-56 object-contain" />
           </div>
-          <div className="text-purple-600 font-semibold mt-4 text-xl">
+          <div className="text-blue-600 font-semibold mt-4 text-xl">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.5 }}>
               Loading AdGrades...
             </motion.div>

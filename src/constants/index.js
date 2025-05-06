@@ -2,40 +2,48 @@
 
 // Brand Colors
 export const COLORS = {
-  primary: "#7c3aed", // Purple
-  primaryDark: "#6d28d9", // Darker Purple
-  primaryLight: "#a78bfa", // Lighter Purple
-  secondary: "#3b82f6", // Blue
-  secondaryDark: "#2563eb", // Darker Blue
-  secondaryLight: "#93c5fd", // Lighter Blue
-  dark: {
-    700: "#1f2937",
-    800: "#111827",
-    900: "#0f172a",
-  },
-  light: {
-    50: "#f8fafc",
-    100: "#f1f5f9",
-    200: "#e2e8f0",
-  },
-  success: "#10b981", // Green
-  warning: "#f59e0b", // Amber
-  error: "#ef4444", // Red
-  text: {
-    primary: "#111827",
-    secondary: "#4b5563",
-    light: "#9ca3af",
-  },
-  background: {
-    primary: "#ffffff",
-    secondary: "#f9fafb",
-    tertiary: "#f3f4f6",
-  },
-  gradient: {
-    primary: "linear-gradient(to right, #7c3aed, #3b82f6)",
-    secondary: "linear-gradient(to right, #6d28d9, #2563eb)",
-    purple: "linear-gradient(to right, #8b5cf6, #6d28d9)",
-  },
+    primary: "#00aeff", // Bright Blue
+    primaryDark: "#01afff", // Cyan Blue (Highlight Blue)
+    primaryLight: "#08b7fc", // Sky Blue (Secondary Blue)
+  
+    secondary: "#08b7fc", // Sky Blue
+    secondaryDark: "#01afff", // Cyan Blue
+    secondaryLight: "#d3e3ed", // Light Accent (Soft Blue/Gray)
+  
+    dark: {
+      700: "#1a1c27",
+      800: "#151720",
+      900: "#12141e", // Very Dark Blue/Black
+    },
+  
+    light: {
+      50: "#f5f9fc",         // Slightly lighter than d3e3ed for contrast
+      100: "#e8f1f8",        // Muted light blue
+      200: "#d3e3ed",        // Soft Blue/Gray
+    },
+  
+    success: "#10b981", // Green (unchanged)
+    warning: "#f59e0b", // Amber (unchanged)
+    error: "#ef4444",   // Red (unchanged)
+  
+    text: {
+      primary: "#ffffff",     // White text on dark background
+      secondary: "#cbd5e1",   // Soft blue-gray
+      light: "#9ca3af",       // Muted text
+    },
+  
+    background: {
+      primary: "#12141e",     // Dark base background
+      secondary: "#1a1c27",   // Slightly lighter than primary
+      tertiary: "#2a2d3a",    // Card-like surfaces
+    },
+  
+    gradient: {
+      primary: "linear-gradient(to right, #00aeff, #08b7fc)",
+      secondary: "linear-gradient(to right, #01afff, #08b7fc)",
+      blue: "linear-gradient(to right, #00aeff, #01afff)",
+    },
+  
 }
 
 // Typography

@@ -138,12 +138,12 @@ const GooeyNav = ({
       <style>
         {`
     :root {
-      --linear-ease: linear(0, 0.068, 0.19 2.7%, 0.804 8.1%, 1.037, 1.199 13.2%, 1.245, 1.27 15.8%, 1.274, 1.272 17.4%, 1.249 19.1%, 0.996 28%, 0.949, 0.928 33.3%, 0.926, 0.933 36.8%, 1.001 45.6%, 1.013, 1.019 50.8%, 1.018 54.4%, 1 63.1%, 0.995 68%, 1.001 85%, 1);
-      --color-1: #7c3aed; /* Primary purple */
-      --color-2: #6d28d9; /* Darker purple */
-      --color-3: #5b21b6; /* Darkest purple */
-      --text-color: #7c3aed; /* Purple text */
-    }
+  --color-1: #00aeff; /* Light blue */
+  --color-2: #08b7fc; /* Medium blue */
+  --color-3: #01afff; /* Darker blue */
+  --text-color: #00aeff; /* Blue text */
+}
+
     .effect {
       position: absolute;
       opacity: 1;
@@ -164,47 +164,28 @@ const GooeyNav = ({
       mix-blend-mode: darken;
     }
     .effect.filter::before {
-  content: "";
-  position: absolute;
-  inset: -20px; /* Reduced from -75px */
-  z-index: -2;
-  background: white;
+  background: transparent;
 }
-    .effect.filter::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: black;
-      transform: scale(0);
-      opacity: 0;
-      z-index: -1;
-      border-radius: 9999px;
-    }
-    .effect.active::after {
-      animation: pill 0.3s ease both;
-    }
+.effect.filter::after {
+  background: transparent;
+}
+li::after {
+  background: transparent;
+}
+
     li {
-      color: var(--text-color); /* Purple text by default */
-    }
-    li.active {
-      color: white; /* White when active */
-      text-shadow: none;
-    }
-    li.active::after {
-      opacity: 1;
-      transform: scale(1);
-    }
-    li::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 8px;
-      background: black;
-      opacity: 0;
-      transform: scale(0);
-      transition: all 0.3s ease;
-      z-index: -1;
-    }
+  color: var(--text-color); /* Blue by default */
+}
+li.active {
+  color: white; /* White when active */
+}
+.effect.text {
+  color: var(--text-color); /* Blue */
+}
+.effect.text.active {
+  color: white;
+}
+
     /* Rest of your particle animations remain the same */
     .particle,
     .point {

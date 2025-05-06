@@ -32,7 +32,7 @@ function App() {
   return (
     <LoadingScreen>
       <AnimatePresence>
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col bg-[#12141e]">
           <ScrollProgressBar />
           <Navbar />
           <main className="flex-grow pt-20">
@@ -54,4 +54,3 @@ function App() {
 }
 
 export default App
-
