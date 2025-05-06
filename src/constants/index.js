@@ -204,49 +204,53 @@ export const ANIMATIONS = {
 
 // Navigation Links
 export const NAV_LINKS = [
-  { name: "Services", href: "#services" },
-  { name: "Clients", href: "#clients" },
-  { name: "Case Studies", href: "#case-studies" },
-  { name: "Reviews", href: "#reviews" },
-  { name: "FAQs", href: "#faqs" },
+  { name: "Services", href: "/services" },
+  { name: "Clients", href: "/clients" },
+  { name: "Case Studies", href: "/casestudies" },
+  { name: "Reviews", href: "/reviews" },
+  { name: "FAQs", href: "/faqs" },
+  { name: "AboutUs", href: "/aboutus" },
 ]
 
 // Services Data
 export const SERVICES = [
   {
-    category: "Performance Marketing",
+    category: "Digital Marketing",
     items: [
-      "AI-Powered Facebook & Instagram Ads",
-      "Google & YouTube Ads – High-intent buyers",
-      "LinkedIn Ads – For serious B2B growth",
-      "TikTok & Snapchat Ads – Gen Z & millennial money machine",
+      "Social Media Marketing – We make scrolling stop & wallets open.",
+      "SEO – Google loves us. Your competitors hate us.",
+      "Content Marketing – Your brand, but make it compelling .",
+      "Graphic Design – We make Picasso jealous.",
+      
     ],
-    icon: "",
   },
   {
-    category: "Conversion & Funnel Optimization",
+    category: "Software Solutions",
     items: [
-      "High-Converting Landing Pages",
-      "Automated Sales Funnels & Chatbots",
-      "A/B Testing & CRO – Every click optimized",
+      "CRM / ERP – Your business, but on autopilot.",
+      "Website & E-Commerce – If your website isn’t selling, is it even a website?",
+      "No-Code Platforms – Build like a pro. No coding required.",
     ],
-    icon: "",
+
   },
   {
-    category: "Content & Brand Domination",
+    category: "Offline Marketing",
     items: [
-      "UGC & Viral Strategies – Scroll-stopping content",
-      "Influencer Marketing – No fake followers",
-      "Memes & Trend-Based Marketing",
+      "Hoardings – Because size matters (for ads, obviously).",
+      "TV / Radio Ads – Your grandma’s favorite marketing? We still make it cool.",
+      "Event Marketing – We turn brand activations into viral experiences.",
     ],
-    icon: "",
+
   },
   {
-    category: "Data-Driven Scaling & Consulting",
-    items: ["Ad Budget Optimization", "Growth Hacking for Startups", "Custom AI & Automation Strategies"],
-    icon: "",
+    category: "Other Services",
+    items: [
+      "Influencer Marketing – We find the right faces to sell your stuff.",
+      "Account-Based Marketing – For B2B clients who want to close deals, not just collect leads.",
+    ],
   },
-]
+];
+
 
 // Clients Data
 export const CLIENTS = [
@@ -420,9 +424,9 @@ export const SOCIAL_LINKS = {
 
 // Contact Information
 export const CONTACT_INFO = {
-  email: "support@adgrades.com",
-  phone: "+1 (123) 456-7890",
-  address: "123 AdGrades St, Marketing City, USA",
+  email: "hello@adgrades.com",
+  phone: "+91 XXXXX XXXXX",
+  address: "Reva University, Bangalore, India",
 }
 
 // Stats for animated counters

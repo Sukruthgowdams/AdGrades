@@ -6,6 +6,7 @@ import { Button } from "../CommonLayout/Button"
 import { AnimatedButton } from "../animations/AnimatedButton"
 import { NAV_LINKS } from "../../constants"
 import GooeyNav from "../../blocks/Components/GooeyNav/GooeyNav"
+import { Link, useNavigate, useLocation } from "react-router-dom" // Import hooks for navigation and location
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -14,6 +15,8 @@ export const Navbar = () => {
   const fullText = "AdGrades"
   const [visibleLetters, setVisibleLetters] = useState(0)
   const [isAnimating, setIsAnimating] = useState(true)
+  const navigate = useNavigate() // React Router's navigate function
+  const location = useLocation() // Current location
 
   useEffect(() => {
     if (!isAnimating) return
@@ -39,12 +42,21 @@ export const Navbar = () => {
 
   const scrollToSection = (e, href) => {
     e.preventDefault()
-    const el = document.querySelector(href)
-    if (el) {
-      window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" })
-      setIsMenuOpen(false)
+    if (location.pathname !== "/") {
+      // Navigate to home and pass the section to scroll to
+      navigate("/", { state: { scrollTo: href } })
+    } else {
+      // Already on homepage, just scroll
+      const el = document.querySelector(href)
+      if (el) {
+        window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" })
+      }
     }
+    setIsMenuOpen(false)
   }
+
+  
+  
 
   return (
     <motion.div
@@ -68,7 +80,8 @@ export const Navbar = () => {
         transition={{ duration: 0.3 }}
       >
         <div className="flex justify-between items-center">
-          <a href="#home" onClick={(e) => scrollToSection(e, "#home")} className="flex items-center font-bold text-xl">
+          {/* Home link */}
+          <Link to="/" className="flex items-center font-bold text-xl">
             {fullText.split("").map((char, i) => (
               <motion.span
                 key={i}
@@ -83,7 +96,7 @@ export const Navbar = () => {
                 {char}
               </motion.span>
             ))}
-          </a>
+          </Link>
 
           <div className="md:hidden">
             <motion.button
@@ -110,12 +123,17 @@ export const Navbar = () => {
 
           <div className="hidden md:flex items-center space-x-6">
             <GooeyNav
-              items={NAV_LINKS.map(({ name, href }) => ({ label: name, href }))}
+              items={NAV_LINKS.map(({ name, href }) => ({
+                label: name,
+                href,
+                onClick: (e) => scrollToSection(e, href),
+              }))}
               particleCount={12}
               particleDistances={[80, 10]}
               animationTime={350}
               colors={[1, 1, 2, 2, 3, 3]} // you can define color maps here too
             />
+            
             <AnimatedButton
               className="bg-[#00aeff] hover:bg-[#08b7fc] text-white px-4 py-2 rounded-lg font-semibold"
               whileHover={{
